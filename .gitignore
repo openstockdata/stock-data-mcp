@@ -12,6 +12,9 @@ stock_data_mcp/_version.py
 # Virtual environments
 .venv
 
+# Lock file (library, not application)
+uv.lock
+
 # Local / AI tools
 .claude/
 CLAUDE.md

@@ -19,8 +19,8 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/stockmcp/stock-data-mcp"
-Repository = "https://github.com/stockmcp/stock-data-mcp.git"
+Homepage = "https://github.com/openstockdata/stock-data-mcp"
+Repository = "https://github.com/openstockdata/stock-data-mcp.git"
 
 [project.scripts]
 stock-data-mcp = "stock_data_mcp:main"
