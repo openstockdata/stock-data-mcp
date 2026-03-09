@@ -2,7 +2,20 @@
 
 MCP Server for stock and crypto data with multi-source failover.
 
-Thin wrapper over [open-stock-data](https://github.com/openstockdata/open-stock-data) — registers 47 tool functions as MCP tools via FastMCP.
+### Multi-Source Data Provider
+
+The `data_provider` module implements automatic failover across multiple data sources:
+
+**Global Priority:**
+
+| Priority | Fetcher | Condition | Markets |
+|----------|---------|-----------|---------|
+| 0 | TushareFetcher | Has TUSHARE_TOKEN | A-shares |
+| 1 | EfinanceFetcher | Default | A-shares, ETF |
+| 2 | AkshareFetcher | Default | A-shares, ETF, HK |
+| 3 | BaostockFetcher | Default | A-shares |
+| 4 | AlphaVantageFetcher | Has API key | US stocks |
+| 5 | YfinanceFetcher | Default | Global |
 
 ## Install
 
@@ -22,3 +35,15 @@ stock-data-mcp --http --host 0.0.0.0 --port 8808
 # Add to Claude Code
 claude mcp add stock-data -- uvx stock-data-mcp
 ```
+
+<summary>Environment Variables (Optional)</summary>
+
+| Variable | Description |
+|----------|-------------|
+| `TUSHARE_TOKEN` | Tushare Pro API Token (high-priority A-share data source) |
+| `ALPHA_VANTAGE_API_KEY` | Alpha Vantage API Key (enhanced US data, falls back to yfinance if not set) |
+| `OKX_BASE_URL` | OKX API proxy URL |
+| `BINANCE_BASE_URL` | Binance API proxy URL |
+| `NEWSNOW_CHANNELS` | NewsNow financial news channel list (default: `wallstreetcn-quick,cls-telegraph,jin10`) |
+
+</details>
