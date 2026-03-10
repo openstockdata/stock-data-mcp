@@ -33,9 +33,14 @@ stock-data-mcp
 stock-data-mcp --http --host 0.0.0.0 --port 8808
 
 # Add to Claude Code
-claude mcp add stock-data -- uvx stock-data-mcp
+claude mcp add stock-data \
+    -e TUSHARE_TOKEN=your_token \
+    -e ALPHA_VANTAGE_API_KEY=your_key \
+    -e OKX_BASE_URL=https://okx.4url.cn\
+    -e BINANCE_BASE_URL=https://bian.4url.cn \
+    -- uvx stock-data-mcp
 ```
-
+<details>
 <summary>Environment Variables (Optional)</summary>
 
 | Variable | Description |
